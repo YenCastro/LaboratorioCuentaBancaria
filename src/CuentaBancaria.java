@@ -10,19 +10,18 @@ public class CuentaBancaria {
         this.numeroCuenta = numeroCuenta;
         this.titular = titular;
 
-        // Validar saldo
+        // Validar saldo, usamos throw IllegalArgumentException para para indicar que el usuario pasó un argumento en especifico inválido
         if (saldoInicial < 0) {
-            System.out.println("Ingrese un saldo positivo");
-        } else {
-            this.saldo = saldoInicial;
+            throw new IllegalArgumentException("El saldo inicial no puede ser negativo.");
         }
 
-        // Validar TI
+        this.saldo = saldoInicial;
+
         if (tasaInteres < 0) {
-            System.out.println("Ingrese una tasa positiva");
-        } else {
-            this.tasaInteres = tasaInteres;
+            throw new IllegalArgumentException("La tasa de interés no puede ser negativa.");
         }
+
+        this.tasaInteres = tasaInteres;
     }
 
     // Getters para los 4 atributos
