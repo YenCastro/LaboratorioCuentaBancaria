@@ -73,7 +73,7 @@ public class TestBanco {
         // RESUMEN FINAL
         System.out.println("\n --------------- RESUMEN FINAL --------------- \n");
 
-        // Mostramos primero las cuentas en total, promedio y el saldo de todas las cuentaas
+        // Calculamos el total de cuentas, el saldo total y el promedio de saldo
         int totalCuentas = 4;
 
         double saldoTotal = cuentaAhorroAna.getSaldo()
@@ -84,8 +84,8 @@ public class TestBanco {
         double promedio = saldoTotal / totalCuentas;
 
         System.out.println("Total de cuentas: " + totalCuentas);
-        System.out.println("Saldo total: $" + saldoTotal);
-        System.out.println("Promedio de saldo: $" + promedio);
+        System.out.println("Saldo total: $" + String.format("%.2f", saldoTotal));
+        System.out.println("Promedio de saldo: $" + String.format("%.2f", promedio));
 
         // Identificamos cual tiene mayor saldo usando if independientes, empezando por Ana, y desde ahí empezando a comparar
         double mayorSaldo = cuentaAhorroAna.getSaldo();
@@ -113,6 +113,6 @@ public class TestBanco {
         System.out.println("Cuenta con mayor saldo:");
         System.out.println("Número de cuenta: " + numeroCuenta);
         System.out.println("Titular: " + titular);
-        System.out.println("Saldo: $" + mayorSaldo);
+        System.out.println("Saldo: $" + String.format("%.2f", mayorSaldo));
     }
 }

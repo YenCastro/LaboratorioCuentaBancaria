@@ -24,6 +24,12 @@ public class CuentaEmpresarial extends CuentaBancaria {
     public void retirar(double monto) {
         double totalRetiro = monto + comisionRetiro;
 
+        // Validar que el monto sea positivo
+        if (monto <= 0) {
+            System.out.println("Error: el monto a retirar debe ser mayor que cero.");
+            return;
+        }
+
         if (totalRetiro > saldo) {
             System.out.println("El saldo es insuficiente para realizar un retiro");
             return;
@@ -32,18 +38,17 @@ public class CuentaEmpresarial extends CuentaBancaria {
         saldo -= (monto + comisionRetiro);
 
         System.out.println("Retiro exitoso");
-        System.out.println("Monto retirado: $" + monto);
-        System.out.println("Comision por retiro: $" + comisionRetiro);
-        System.out.println("Nuevo saldo: $" + saldo);
+        System.out.println("Monto retirado: $" + String.format("%.2f", monto));
+        System.out.println("Comisión por retiro: $" + String.format("%.2f", comisionRetiro));
+        System.out.println("Nuevo saldo: $" + String.format("%.2f", saldo));
     }
 
     @Override
     public void mostrarInfo() {
         super.mostrarInfo();
         System.out.println("Nombre de la empresa: " + nombreEmpresa);
-        System.out.println("RUT de la empresa: " + RUT
-        );
-        System.out.println("Tipo de cuenta: Corriente");
+        System.out.println("RUT de la empresa: " + RUT);
+        System.out.println("Tipo de cuenta: Empresarial");
     }
 }
 

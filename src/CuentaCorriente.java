@@ -29,9 +29,19 @@ public class CuentaCorriente extends CuentaBancaria {
     // Metodo retirar()
     @Override
     public void retirar(double monto) {
-        if (monto > saldo + limiteSobregiro) {
-            System.out.println("Error: supera el límite de sobregiro.");
+
+        // Validar que el monto sea positivo
+        if (monto <= 0) {
+            System.out.println("Error: el monto a retirar debe ser mayor que cero.");
+            return;
         }
+
+        // Verificar que no supere el saldo disponible más el límite de sobregiro
+        if (monto > saldo + limiteSobregiro) {
+            System.out.println("Error: el monto supera el límite de sobregiro permitido.");
+            return;
+        }
+
         // Se realiza el retiro
         saldo -= monto;
 
@@ -41,20 +51,21 @@ public class CuentaCorriente extends CuentaBancaria {
             saldo -= comision;
 
             System.out.println("La cuenta entró en sobregiro.");
-            System.out.println("Monto sobregirado: $" + montoSobregirado);
-            System.out.println("Comisión por sobregiro: $" + comision);
+            System.out.println("Monto sobregirado: $" + String.format("%.2f", montoSobregirado));
+            System.out.println("Comisión por sobregiro: $" + String.format("%.2f", comision));
 
         }
 
         System.out.println("Retiro realizado con éxito.");
-        System.out.println("Monto retirado: $" + monto);
-        System.out.println("Nuevo saldo: $" + saldo);
+        System.out.println("Monto retirado: $" + String.format("%.2f", monto));
+        System.out.println("Nuevo saldo: $" + String.format("%.2f", saldo));
     }
 
     @Override
     public void mostrarInfo() {
         super.mostrarInfo();
-        System.out.println("Límite de sobregiro: " + limiteSobregiro);
+        System.out.println("Límite de sobregiro: $" + String.format("%.2f", limiteSobregiro));
+        System.out.println("Comisión por sobregiro: " + porcentajeComisionSobregiro + "%");
         System.out.println("Tipo de cuenta: Corriente");
     }
 }

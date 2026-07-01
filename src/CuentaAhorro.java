@@ -25,8 +25,8 @@ public class CuentaAhorro extends CuentaBancaria {
         } else if (monto <= saldo) {
             saldo -= monto;
             System.out.println("Retiro realizado con éxito.");
-            System.out.println("Monto retirado: $" + monto);
-            System.out.println("Nuevo saldo: $" + saldo);
+            System.out.println("Monto retirado: $" + String.format("%.2f", monto));
+            System.out.println("Nuevo saldo: $" + String.format("%.2f", saldo));
         } else {
             System.out.println("Error: saldo insuficiente.");
         }
